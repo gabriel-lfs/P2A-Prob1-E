@@ -15,40 +15,42 @@ import problema1.WAVPlayer;
 public class WAVPlayerImp implements FormatoAudio {
 
     private WAVPlayer player;
-    
+    private int posicao = 0;
     @Override
     public void abrir(String nomeArquivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player = new WAVPlayer(nomeArquivo);
     }
 
     @Override
     public void reproduzir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.forward(posicao);
+        player.play();
     }
 
     @Override
     public void pausar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        posicao = player.forward(0);
+        player.stop();
     }
 
     @Override
     public void parar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.stop();
     }
 
     @Override
     public void avancar(int ponteiro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.forward(ponteiro);
     }
 
     @Override
     public void retomar(int ponteiro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.reward(ponteiro);
     }
 
     @Override
     public void liberar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.stop();
     }
      
 }
