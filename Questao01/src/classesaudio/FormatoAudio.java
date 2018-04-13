@@ -1,14 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classesaudio;
 
 /**
- *
+ * Ver "template" design pattern
+ * "Bridge"
+ * 
  * @author gabriel
  */
 public interface FormatoAudio {
-    
+    void abrir(String nomeArquivo);
+    void reproduzir();
+    void pausar();
+    void parar();
+    void avancar(int ponteiro);
+    void retomar(int ponteiro);
+    void liberar();
 }
