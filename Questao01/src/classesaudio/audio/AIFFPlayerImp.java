@@ -12,43 +12,48 @@ import problema1.AIFFSuperPlayer;
  *
  * @author gabriel
  */
-public class AIFFPlayerImp implements FormatoAudio{
+public class AIFFPlayerImp implements FormatoAudio {
     
     private AIFFSuperPlayer player;
+    private int posicao = 0;
 
     @Override
     public void abrir(String nomeArquivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player = new AIFFSuperPlayer(nomeArquivo);
     }
 
     @Override
     public void reproduzir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.setCursor(posicao);
+        player.play();
     }
 
     @Override
     public void pausar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        posicao = player.pause();
     }
 
     @Override
     public void parar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.stop();
     }
 
     @Override
     public void avancar(int ponteiro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.pausar();
+        this.reproduzir();
+        player.setCursor(posicao + ponteiro);
     }
 
     @Override
     public void retomar(int ponteiro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.pausar();
+        this.reproduzir();
+        player.setCursor(posicao - ponteiro);
     }
 
     @Override
     public void liberar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        player.release();
     }
-    
 }
