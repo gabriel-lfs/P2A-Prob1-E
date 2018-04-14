@@ -14,11 +14,10 @@ import problema1.wmaPlay;
  */
 public class WMAPlayerImp implements FormatoAudio {
     
-    private wmaPlay player;
+    private final wmaPlay player = new wmaPlay();
     private int posicao = 0;
     @Override
     public void abrir(String nomeArquivo) {
-        player = new wmaPlay();
         player.setFile(nomeArquivo);
         player.open();
     }
