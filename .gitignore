@@ -29,3 +29,4 @@ dist/
 nbdist/
 .nb-gradle/
 /Questao01/nbproject/private/
+/Questao01/nbproject/private/private.properties

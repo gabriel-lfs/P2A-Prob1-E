@@ -14,4 +14,6 @@ public interface FormatoAudio {
     void avancar(int ponteiro);
     void retomar(int ponteiro);
     void liberar();
+    void reproduzirSimples(String nomeArquivo);
+    void pararSimples();
 }

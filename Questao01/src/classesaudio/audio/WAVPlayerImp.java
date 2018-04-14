@@ -52,5 +52,16 @@ public class WAVPlayerImp implements FormatoAudio {
     public void liberar() {
         player.stop();
     }
-     
+    
+    @Override
+    public void reproduzirSimples(String nomeArquivo) {
+        this.abrir(nomeArquivo);
+        this.reproduzir();
+    }
+
+    @Override
+    public void pararSimples() {
+        this.parar();
+        this.liberar();
+    }
 }
