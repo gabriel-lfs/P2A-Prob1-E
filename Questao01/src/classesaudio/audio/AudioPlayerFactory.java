@@ -1,6 +1,5 @@
 package classesaudio.audio;
 
-import problema1.*;
 import classesaudio.FormatoAudio;
 
 /**
@@ -9,7 +8,7 @@ import classesaudio.FormatoAudio;
  */
 public class AudioPlayerFactory {
     
-    private String arquivo;
+    private final String arquivo;
     
     public AudioPlayerFactory(String arquivo) {
         this.arquivo = arquivo;
@@ -22,12 +21,11 @@ public class AudioPlayerFactory {
             case "wma": fa = new WMAPlayerImp();
                         break;
             case "aiff": fa = new AIFFPlayerImp();
-                         break;
+                        break;
             case "wav": fa = new WAVPlayerImp();
                         break;
         }
         if (fa != null) {
-            fa.abrir(this.arquivo);
             return fa;
         } else {
             throw new IllegalArgumentException("ya dun goofed");
