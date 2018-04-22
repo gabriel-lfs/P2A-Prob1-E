@@ -43,10 +43,15 @@ public class AudioAdapterFactory {
      * Possui a limitação de não suportar arquivos adapters que não tenham o
      * construtor vazio. Implementado somente como prova de conceito.
      *
+     * @deprecated Metodo criado somente a tópico de curiosidade utilizando
+     * reflection. A forma preferivel é o metodo
+     * <code>openFileManual(...)</code>
+     *
      * @param file
      * @return
      * @throws AudioNotSupportedException
      */
+    @Deprecated
     public static FormatoAudio openFileGenerico(String file) throws AudioNotSupportedException {
 
         String ext = "Sem extensão";

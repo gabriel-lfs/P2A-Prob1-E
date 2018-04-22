@@ -102,7 +102,7 @@ public class PlaylistAudioPlayer implements AudioFacade {
                 pararSimples();
             });
 
-            formatoAudio = Optional.of(AudioAdapterFactory.openFileGenerico(music));
+            formatoAudio = Optional.of(AudioAdapterFactory.openFileManual(music));
             current = Optional.of(index);
 
             // Reproduz o arquivo de audio

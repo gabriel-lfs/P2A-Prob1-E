@@ -26,8 +26,7 @@ public class SimpleAudioPlayer implements AudioFacade {
         pararSimples();
 
         // Abre o arquivo
-        formatoAudio = Optional.of(AudioAdapterFactory.openFileGenerico(arquivo));
-        // formatoAudio = Optional.of(AudioAdapterFactory.openFileManual(arquivo));
+        formatoAudio = Optional.of(AudioAdapterFactory.openFileManual(arquivo));
 
         // Inicia a reprodução do arquivo
         formatoAudio.ifPresent(FormatoAudio::reproduzir);
