@@ -3,39 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classesaudio.audio;
+package classesaudio.audio.adapters;
 
-import classesaudio.FormatoAudio;
-import problema1.wmaPlay;
+import problema1.AACPlayer;
 
 /**
  *
- * @author gabriel
+ * @author guilh
  */
-public class WMAPlayerImp implements FormatoAudio {
-    
-    private final wmaPlay player = new wmaPlay();
-    private int posicao = 0;
+public class AACPlayerAdapter extends FormatoAudioAdapter {
+
+    private AACPlayer player;
+
     @Override
     public void abrir(String nomeArquivo) {
-        player.setFile(nomeArquivo);
+        player = new AACPlayer(nomeArquivo);
         player.open();
+        player.setLocation(0);
     }
 
     @Override
     public void reproduzir() {
-        player.setLocation(posicao);
         player.play();
     }
 
     @Override
     public void pausar() {
-        posicao = player.getLocation();
         player.stop();
     }
 
     @Override
     public void parar() {
+        player.stop();
         player.stop();
     }
 
@@ -45,13 +44,13 @@ public class WMAPlayerImp implements FormatoAudio {
     }
 
     @Override
-    public void retomar(int ponteiro) {
+    public void retornar(int ponteiro) {
         player.setLocation(player.getLocation() - ponteiro);
     }
 
     @Override
     public void liberar() {
-        player.stop();
+        this.parar();
     }
-    
+
 }

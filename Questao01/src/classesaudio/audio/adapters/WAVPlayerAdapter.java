@@ -3,57 +3,55 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classesaudio.audio;
+package classesaudio.audio.adapters;
 
-import classesaudio.FormatoAudio;
-import problema1.AIFFSuperPlayer;
+import problema1.WAVPlayer;
 
 /**
  *
  * @author gabriel
  */
-public class AIFFPlayerImp implements FormatoAudio {
-    
-    private AIFFSuperPlayer player;
-    private int posicao = 0;
+public class WAVPlayerAdapter extends FormatoAudioAdapter {
+
+    private WAVPlayer player;
 
     @Override
     public void abrir(String nomeArquivo) {
-        player = new AIFFSuperPlayer(nomeArquivo);
+        player = new WAVPlayer(nomeArquivo);
     }
 
     @Override
     public void reproduzir() {
-        player.setCursor(posicao);
         player.play();
     }
 
     @Override
     public void pausar() {
-        posicao = player.pause();
-    }
-
-    @Override
-    public void parar() {
         player.stop();
     }
 
     @Override
-    public void avancar(int ponteiro) {
-        this.pausar();
-        this.reproduzir();
-        player.setCursor(posicao + ponteiro);
+    public void parar() {
+        // Para a execução
+        player.stop();
+            
+        // Volta para o inicio
+        player.reward(player.forward(0));
     }
 
     @Override
-    public void retomar(int ponteiro) {
-        this.pausar();
-        this.reproduzir();
-        player.setCursor(posicao - ponteiro);
+    public void avancar(int ponteiro) {
+        player.forward(ponteiro * 1000);
+    }
+
+    @Override
+    public void retornar(int ponteiro) {
+        player.reward(ponteiro * 1000);
     }
 
     @Override
     public void liberar() {
-        player.release();
+        player.stop();
     }
+
 }

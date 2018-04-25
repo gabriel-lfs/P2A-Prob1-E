@@ -12,6 +12,6 @@ public interface FormatoAudio {
     void pausar();
     void parar();
     void avancar(int ponteiro);
-    void retomar(int ponteiro);
+    void retornar(int ponteiro);
     void liberar();
 }
