@@ -17,30 +17,40 @@ public class AACPlayerAdapter extends FormatoAudioAdapter {
 
     @Override
     public void abrir(String nomeArquivo) {
+        player = new AACPlayer(nomeArquivo);
+        player.open();
+        player.setLocation(0);
     }
 
     @Override
     public void reproduzir() {
+        player.play();
     }
 
     @Override
     public void pausar() {
+        player.stop();
     }
 
     @Override
     public void parar() {
+        player.stop();
+        player.stop();
     }
 
     @Override
     public void avancar(int ponteiro) {
+        player.setLocation(player.getLocation() + ponteiro);
     }
 
     @Override
     public void retornar(int ponteiro) {
+        player.setLocation(player.getLocation() - ponteiro);
     }
 
     @Override
     public void liberar() {
+        this.parar();
     }
 
 }
